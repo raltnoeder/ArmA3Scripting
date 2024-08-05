@@ -4,7 +4,7 @@ fn_addCommandAction =
   _targetUnit addAction [
     "Command this person",
     {params ["_actionUnit"]; [_actionUnit] joinSilent group player;},
-    nil, 3, false, true, "", "!(_originalTarget in units group player)", 2, false
+    nil, 3, false, true, "", "_originalTarget != player && !(_originalTarget in units group player)", 2, false
   ];
 };
 
@@ -14,7 +14,7 @@ fn_addDismissAction =
   _targetUnit addAction [
     "Dismiss this person",
     {params ["_actionUnit"]; [_actionUnit] joinSilent grpNull;},
-    nil, 2.9, false, true, "", "_originalTarget in units group player", 2, false
+    nil, 2.9, false, true, "", "_originalTarget != player && _originalTarget in units group player", 2, false
   ];
 };
 
@@ -24,7 +24,7 @@ fn_addDismissToGroupAction =
   _targetUnit addAction [
     "Dismiss this person",
     {params ["_actionUnit", "_caller", "_actionId", "_actionGroup"]; [_actionUnit] joinSilent _actionGroup;},
-    _targetGroup, 2.9, false, true, "", "_originalTarget in units group player", 2, false
+    _targetGroup, 2.9, false, true, "", "_originalTarget != player && _originalTarget in units group player", 2, false
   ];
 };
 
